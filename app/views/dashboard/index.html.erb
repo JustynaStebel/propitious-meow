@@ -1,16 +1,14 @@
 <h1> Hello, here you have your facebook data</h1>
-<% for i in 0..10 do %>
-  <% unless @posts['data'][i]['message'].blank? %>
-    Post:
-    <%= @posts['data'][i]['message'] %> <br>
-    Likes:
-    <%= @posts['data'][i]['likes']['summary']['total_count'] %> <br>
-    Shares:
-    <% if @posts['data'][i]['shares'].blank? %>
-      0
-    <% else %>
-      <%= @posts['data'][i]['shares'] %>
-    <% end %>
-    <br><br><br>
+<% @posts['data'].each do |post| %>
+  Post:
+  <%= post['message'] %> <br>
+  Likes:
+  <%= post['likes']['summary']['total_count'] %> <br>
+  Shares:
+  <% if post['shares'].blank? %>
+    0
+  <% else %>
+    <%= post['shares'] %>
   <% end %>
+  <br><br><br>
 <% end %>
